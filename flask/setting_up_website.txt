@@ -1,0 +1,70 @@
+FROM THE FLASK DIRECTORY
+NOTE - this is for AWS
+    all that needs to be done for local dev is starting a python venv, download flask inside of it, and launch app.py from flask directory
+
+
+    
+
+get virtual env if its lost
+python3 -m venv .venv
+
+init it
+source .venv/bin/activate
+
+install gunicorn
+pip install gunicorn
+
+nginx to get https
+* requires sudo update
+sudo apt install nginx -y
+
+make a config
+sudo nano /etc/nginx/sites-available/whatsfordinner
+
+put in
+
+server {
+    listen 80;
+    server_name yourdomain.com mattwermers.me;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+cntr+x then y
+
+create symlink
+sudo ln -s /etc/nginx/sites-available/whatsfordinner /etc/nginx/sites-enabled/
+
+
+Remove the default nginx site to avoid conflicts
+sudo rm /etc/nginx/sites-enabled/default
+
+Test the config for syntax error
+sudo nginx -t
+
+If the test is successful, restart Ngin
+sudo systemctl restart nginx
+
+start gunicorn-w = worker processes`
+-b ports to listen on
+-app.py file app flask variable
+-add nohup at the front if you want it to persist
+- --access-logfile to see connections for debug
+nohup gunicorn -w 2 -b 127.0.0.1:5000 --access-logfile app:app
+        bound to 127.0.0.1 this time, because Nginx will handle the public traffic and talk to Gunicorn internally
+
+to kill 
+sudo if your serious
+pkill gunicorn
+
+to check for instances
+ps aux | grep gunicorn
+
+Install Certbot and its Nginx plugin
+sudo apt install certbot python3-certbot-nginx -y
+Run Certbot to get the certificate

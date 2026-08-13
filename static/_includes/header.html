@@ -1,0 +1,47 @@
+<header id="site-header">
+    <div class="logo">
+        <h1 class="logo-name">Matt Wermers</h1>
+        <span class="logo-divider">|</span>
+        <a href="tel:7203414962" class="logo-contact" title="Click to call this number using your default application">720-341-4962</a>
+        <span class="logo-divider">|</span>
+        <a href="mailto:matthew.wermers@gmail.com" class="logo-contact" title="Click to send an email using your default application">matthew.wermers@gmail.com</a>
+        <span class="logo-divider">|</span>
+        <a href="https://www.linkedin.com/in/mattwermers/" class="logo-contact" title="View my LinkedIn profile">LinkedIn</a>
+        <span class="logo-divider">|</span>
+        <a href="https://github.com/MattWermers/" class="logo-contact" title="View the source code for this website and my other projects on GitHub">GitHub</a>
+    </div>
+
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <!-- Dropdown 1: About Me -->
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/index.html" class="nav-link">About Me</a>
+                <div class="dropdown-menu">
+                    <a href="{{ site.baseurl }}/index.html#aboutme">Biography</a>
+                    <a href="{{ site.baseurl }}/index.html#techstack">Tech Stack</a>
+                    <a href="{{ site.baseurl }}/index.html#skills">Skills</a>
+                    <a href="{{ site.baseurl }}/index.html#education">Education</a>
+                    <a href="{{ site.baseurl }}/index.html#experience">Experience</a>
+                </div>
+            </li>
+            
+            <!-- Dropdown 2: Projects -->
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/Pages/projects.html" class="nav-link">Projects</a>
+                <div class="dropdown-menu">
+                    <a href="{{ site.baseurl }}/Pages/projects.html#webapps">Web Apps & Sites</a>
+                </div>
+            </li>
+
+            <!-- Dropdown 3: Interests -->
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/Pages/Interests.html" class="nav-link">Interests</a>
+                <div class="dropdown-menu">
+                    <a href="{{ site.baseurl }}/Pages/SoftwareDev.html">Software Dev</a>
+                    <a href="{{ site.baseurl }}/Pages/ComputerScience.html">Computer Science</a>
+                    <a href="{{ site.baseurl }}/Pages/Biology.html">Biology</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,108 @@
+/*
+Component: Badge Card
+
+Usage
+    Params
+        --badge-size        : Diameter of the circular badge image (default: 9rem)
+    
+    Classes
+        .badge-card          : The main card container
+        .card-badge          : Circle container wrapping the <img> element
+        .card-badge-absolute : Modifier for absolute positioning of badge on the top border
+        .card-badge-float    : Modifier to float badge left and wrap body text around it
+        .card-content        : Vertical layout wrapper for card text content
+        .card-title          : Title box overlay (specifically for absolute layout)
+        .card-body           : Body text inside the card
+        
+    Example (Absolute Layout):
+        <div class="badge-card">
+            <div class="card-badge card-badge-absolute">
+                <img src="path/to/image.jpg" alt="Profile">
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">Card Title</h2>
+                <p class="card-body">Card body text goes here...</p>
+            </div>
+        </div>
+
+    Example (Floating Layout):
+        <div class="badge-card">
+            <div class="card-badge card-badge-float">
+                <img src="path/to/image.jpg" alt="Profile">
+            </div>
+            <div class="card-content">
+                <p class="card-body">Paragraph text that flows around the floated badge...</p>
+            </div>
+        </div>
+*/
+.badge-card {
+    position: relative;
+    background-color: var(--color-content);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 4rem 1rem 1rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    scroll-margin-top: 6rem; /* Stop scrolling early to keep floating profile badge in view */
+}
+
+/* Sizing and shape of the image/badge container */
+.badge-card .card-badge {
+    width: var(--badge-size, 9rem);
+    height: var(--badge-size, 9rem);
+    border-radius: 50%;
+    border: 3px solid var(--color-bg);
+    overflow: hidden;
+}
+
+/* Absolute positioning modifier (no text wrapping) */
+.card-badge-absolute {
+    position: absolute;
+    top: calc(var(--badge-size, 9rem) / -2);
+    left: min(0.5rem, calc(var(--badge-size, 9rem) / 3));
+}
+
+/* Floating layout modifier (wraps text around the badge) */
+.card-badge-float {
+    float: left;
+    margin-top: calc(-1 * (var(--badge-size, 9rem) / 2 + 1.5rem));
+    margin-right: 0rem;
+    margin-bottom: 0rem;
+
+    shape-outside: circle(50%) border-box;
+    shape-margin: 0.5rem;
+}
+
+.card-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-card .card-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+}
+
+.badge-card .card-body {
+    margin-top: 0rem;
+    color: var(--color-content-text);
+}
+
+/*For placing only with the abolsolute layout*/
+.badge-card .card-title {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: calc(var(--badge-size, 9rem) + 0.5rem);
+    color: var(--color-content-text);
+
+    background-color: var(--color-content);
+    border: 3px solid var(--color-bg);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}

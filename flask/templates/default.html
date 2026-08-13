@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/Base/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/Base/WhatsForDinner.css') }}">
+
+    <!-- Most similar font to the one used in the PAGE_TESTING which I think was gothic-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <script>
+        const SCRIPT_ROOT = {{ request.script_root | tojson }};
+    </script>
+</head>
+
+
+<body>
+    <p id="app-title"><a href="{{ url_for('wfd_home') }}">WHATSFORDINNER</a></p>
+    {% block content %}
+    {% endblock %}
+    {% include 'includes/footer.html' %}
+</body>
+
+</html>

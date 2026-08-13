@@ -1,0 +1,28 @@
+{% extends 'default.html' %}
+
+{% block content %}
+
+
+
+
+<div id="about-container">
+    <h1 class="about-header">vision</h1>
+    <p>WhatsForDinner is a web application that quickly finds reciptes well-suited to ingredients users have on hand. It combines user-provided
+        input with required kitchen staples to suggest possible recipes that can be prepared.
+    </p>
+    <h1 class="about-header">motivation</h1>
+    <p>Many people struggle to use up their groceries before they spoil, WhatsForDinner is a web based application that
+        tries to solve the issue. The goal is to save time, money, and reduce food waste.
+    </p>
+</div>
+
+<style>
+    #about-container {
+        width: 80%;
+        /* adjust this v with the amount of text in the element, probably a better way to do this */
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+</style>
+
+{% endblock %}

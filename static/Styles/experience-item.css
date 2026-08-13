@@ -1,0 +1,164 @@
+/*
+Component: Experience Timeline
+
+Usage
+    Classes
+        .company-block     : Spacing and card container for each company section
+        .company-header    : Flexbox container for company name and duration
+        .company-name      : Accent-colored company name heading
+        .company-duration  : Muted date range for the overall company employment
+        .single-role-body  : Simple single role body wrapper (adds indentation)
+        .role-header       : Flexbox container for job title and specific date range
+        .role-title        : Job title heading
+        .role-date         : Job title specific date range
+        .nested-timeline   : Relative container linking multiple promoted roles
+        .nested-role       : Individual role within a multi-role nested timeline (draws connection dots and lines)
+        
+    Modifiers
+        .nested-timeline.no-line : Hides connection lines between roles but keeps layout spacing intact
+        
+    Example (Single Role):
+        <div class="company-block">
+            <div class="company-header">
+                <span class="company-name">Company Name</span>
+                <span class="company-duration">2020 - Present</span>
+            </div>
+            <div class="single-role-body">
+                <div class="role-header">
+                    <span class="role-title">Software Developer</span>
+                    <span class="role-date">2020 - Present</span>
+                </div>
+                <!-- Role details / bullet points -->
+            </div>
+        </div>
+
+    Example (Multiple Promoted Roles / Timeline):
+        <div class="company-block">
+            <div class="company-header">
+                <span class="company-name">Company Name</span>
+                <span class="company-duration">2018 - 2022</span>
+            </div>
+            <div class="nested-timeline">
+                <div class="nested-role">
+                    <div class="role-header">
+                        <span class="role-title">Senior Developer</span>
+                        <span class="role-date">2020 - 2022</span>
+                    </div>
+                    <!-- Role details -->
+                </div>
+                <div class="nested-role">
+                    <div class="role-header">
+                        <span class="role-title">Junior Developer</span>
+                        <span class="role-date">2018 - 2020</span>
+                    </div>
+                    <!-- Role details -->
+                </div>
+            </div>
+        </div>
+*/
+.company-block {
+    background-color: var(--color-subcontent); /* Slate-blue subcontent box */
+    border-radius: 0.5rem;                     /* Rounded corners */
+    padding: 1.25rem;                          /* Inner spacing */
+    margin-bottom: 2rem;                       /* Spacing between different companies */
+}
+
+.company-block:last-child {
+    margin-bottom: 0;
+}
+
+/* 2. Style the top Company Header */
+.company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-content); /* Dark Charcoal divider line */
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.company-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--color-subcontext-accentext); /* Sky blue accent */
+}
+
+.company-duration {
+    font-size: 0.95rem;
+    color: var(--color-subcontext-secondarytext); /* Muted gray-blue */
+}
+
+/* 3. Single Role Layout (For simple roles without promotion timelines) */
+.single-role-body {
+    padding-left: 1rem;
+}
+
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.role-title {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--color-subcontext-primarytext); /* White */
+}
+
+.role-date {
+    font-size: 0.9rem;
+    color: var(--color-subcontext-secondarytext); /* Muted gray-blue */
+}
+
+/* 4. The Nested Promotion Timeline (Connects multiple roles at same company) */
+.nested-timeline {
+    position: relative;
+    margin-left: 1.5rem;                            
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Individual nested roles */
+.nested-role {
+    position: relative;
+    padding-left: 1.75rem;                          /* Space between line/dots and text content */
+    margin-bottom: 1.5rem;
+}
+
+.nested-role:last-child {
+    margin-bottom: 0;
+}
+
+/* 5. The Timeline Bullet Dot (LinkedIn Style) */
+.nested-role::before {
+    content: "";
+    position: absolute;
+    left: -7px;                                     /* Centered perfectly at 0px (-7px + 7px half-width) */
+    top: 0.35rem;                                   /* Align vertically with the role header */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-subcontext-accentext); /* Sky blue dot */
+    border: 2px solid var(--color-subcontent);         /* Mask border to match the slate-blue background */
+    z-index: 2;                                     /* Ensure dot sits on top of the connection line */
+}
+
+/* The Connecting Line (Only drawn from this role down to the next one) */
+.nested-role:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: -1px;                                     /* Centered perfectly at 0px (-1px + 1px half-width) */
+    top: 0.35rem;                                   /* Start exactly at the current dot */
+    bottom: -1.75rem;                               /* Stretch down through the margin to meet the next dot */
+    width: 2px;
+    background-color: var(--color-content);         /* Connection line color */
+    z-index: 1;                                     /* Behind the dots */
+}
+
+/* Modifier: Hides the vertical line track on child roles while keeping layout spacing identical */
+.nested-timeline.no-line .nested-role {
+    border-left-color: transparent;
+}

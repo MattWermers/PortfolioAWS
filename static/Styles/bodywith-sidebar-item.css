@@ -1,0 +1,42 @@
+/*
+Layout: Body with Sidebar
+
+Usage
+    Classes
+        .bodywith-sidebar : Flex container that divides the viewport into a sidebar and a main content area
+        .bar              : Sidebar container (fixed-width/flex-shrink)
+        .body             : Main content area (fills remaining viewport width)
+        #interior         : Padding container inside the main content area
+        
+    Example:
+        <div class="bodywith-sidebar">
+            <aside class="bar">
+                <!-- Sidebar contents, navigation links, etc. -->
+            </aside>
+            <main class="body">
+                <div id="interior">
+                    <!-- Main page contents -->
+                </div>
+            </main>
+        </div>
+*/
+.bodywith-sidebar {
+    display: flex;
+    min-height: 100vh;
+}
+
+.bodywith-sidebar .bar {
+    width: 20%;
+    max-width: 200px;
+    flex-shrink: 0;
+    background-color: var(--color-accent-cream);
+}
+
+.bodywith-sidebar .body {
+    background-color: var(--color-bg);
+    flex-grow: 1;
+}
+
+.bodywith-sidebar .body #interior {
+    padding: 1rem;
+}

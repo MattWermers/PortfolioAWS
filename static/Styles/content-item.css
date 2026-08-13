@@ -1,0 +1,80 @@
+/*
+Component: Content Card
+
+Usage
+    Params
+        --i-color-content      : Instance background color for the card and title box (default: --color-content)
+        --i-color-content-text : Instance text color for the title and body (default: --color-content-text)
+
+    Classes
+        .content-card : Main card container with box shadow and padding
+        .card-content : Vertical flexbox container for title and body alignment
+        .card-title   : Absolute-positioned title box that overlaps the top border of the card
+        .card-body    : Body text container inside the card
+        
+    Example:
+        <div class="content-card" style="--i-color-content: #1a202c; --i-color-content-text: #e2e8f0;">
+            <div class="card-content">
+                <h2 class="card-title">Card Header</h2>
+                <div class="card-body">
+                    <p>Card content and paragraph text...</p>
+                </div>
+            </div>
+        </div>
+*/
+.content-card {
+    position: relative;
+    background-color: var(--i-color-content, var(--color-content));
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 4rem 1rem 1rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    scroll-margin-top: 4.5rem; /* Stop scrolling early to keep floating title in view */
+}
+
+/* Clear vertical space for the absolute header overlapping the top border */
+.content-card .card-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem; /* Pushes content down to clear the absolute title box */
+}
+
+/* Style the absolute header box aligned to the left */
+.content-card .card-title {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    /* Left-aligned, matching where the circular image/badge would sit */
+    left: 2rem; 
+    
+    color: var(--i-color-content-text, var(--color-content-text));
+    background-color: var(--i-color-content, var(--color-content));
+    border: 3px solid var(--color-bg);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.content-card .card-body {
+    margin-top: 0.5rem;
+    color: var(--i-color-content-text, var(--color-content-text));
+}
+
+/*This makes it so that if a section a content card is a link, it will not be underlined */
+.block-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+/* Makes the content card raise a bit when hovered */
+.block-link:hover .content-card{
+    transform: translateY(-0.25rem);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+.content-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

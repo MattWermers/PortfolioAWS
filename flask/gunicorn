@@ -1,0 +1,5 @@
+create gunicorn     gunicorn -w 4 -b 0.0.0.0:5000 app:app & <-takes over the command line
+
+YOU NEED TO INIT THE DB FROM flask/ BY RUNNING init_db.py BEFORE APP WILL WORK
+
+kill gunicorn       pkill gunicorn

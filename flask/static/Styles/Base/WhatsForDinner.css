@@ -1,0 +1,263 @@
+.landing-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+}
+
+#app-title {
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+#app-title a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.landing-box #landing-app-title {
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.landing-box #landing-picklist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: fit-content;
+    height: auto;
+}
+
+.landing-box #landing-picklist .p_button {
+    background-color: #ffffff;
+    width: fit-content;
+}
+
+.picklist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.running-box {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 70vh;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    min-width: 20rem;
+    max-width: 40rem;
+    /* background-color: #326432; DEBUG */
+    padding: 10px;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.right-side {
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #ff0000; DEBUG */
+    flex-grow: 1;
+    height: 100%;
+}
+
+.running-app-title {
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+    justify-content: center;
+}
+
+.display-holder {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+.imgrec-details {
+    margin: 1rem;
+}
+
+.imgrec-title {
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: aqua;
+}
+
+.imgrec-img {
+    position: absolute;
+    display: flex;
+    object-fit: cover;
+    /* overflow: hidden; wrong place */
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.imgrec-img-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.imgrec-img img {
+    display: flex;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.display-holder img:hover {
+    opacity: 20%;
+    transition: opacity 0.5s ease;
+}
+
+
+
+/* Interactables below */
+/*--------v searchbox v---------*/
+.searchbar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: fill;
+}
+
+.searchbar input {
+    flex: 1;
+    outline: none;
+}
+
+.input-textbox input[type="text"] {
+    position: absolute;
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+    border: 1px solid #bbb;
+    background: #fff;
+    color: #111;
+    outline: none;
+    margin-top: 0.25rem;
+}
+
+.input-textbox input[type="text"]::placeholder {
+    color: #999;
+}
+
+.suggestion-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    color: #111;
+    background: #900;
+}
+
+.suggestion-item:focus,
+.suggestion-item.highlighted {
+    background: #e0e0ff;
+    outline: none;
+}
+
+.ingredient-search {
+    border-radius: 50%;
+    outline: none;
+    border: none;
+}
+
+/*--------^ searchbox ^---------*/
+
+.p_button {
+    border: none;
+    border-radius: 1px;
+    /* Makes the borders square but not visibly pointy*/
+    padding: 0.1rem 0.2rem;
+    margin: 2px;
+    background: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: none;
+    width: fit-content;
+    min-width: 50px;
+    font-size: 1rem;
+    color: #555;
+    text-decoration: none;
+}
+
+.p_button:hover {
+    color: #000;
+}
+
+.p_button.active {
+    color: #000;
+}
+
+#arrow-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+#arrow-right {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 0;
+    transform: translate(50%)
+}
+
+#random-button {
+    width: 100%;
+    padding: 0.65rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: #e0e0e0;
+    border: 1px solid #aaa;
+    color: #111;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+#random-button:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}

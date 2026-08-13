@@ -1,0 +1,37 @@
+/*
+Layout: Flex Grid (Flex Object)
+
+Usage
+    Params
+        --gap          : Space between flex grid items (default: 10px)
+        --direction    : Direction of flex layout flow (default: row)
+        --item-width   : The ideal/base width for each grid item (default: 150px)
+        
+    Classes
+        .flex-object   : Flexbox wrapper grid. Automatically wraps children and grows/shrinks them
+        
+    Example:
+        <div class="flex-object" style="--item-width: 200px; --gap: 15px;">
+            <div>Grid Item 1</div>
+            <div>Grid Item 2</div>
+            <div>Grid Item 3</div>
+        </div>
+*/
+
+.flex-object {
+    display: flex;
+    flex-wrap: wrap; /*Let items flow into new rows*/
+    gap: var(--gap, 10px); /*Space between items*/
+    flex-direction: var(--direction, row);
+}
+
+.flex-object > * {
+    /* 
+       Shorthand for:
+       - flex-grow: 1 (grow to fill empty space)
+       - flex-shrink: 1 (shrink if container is too small)
+       - flex-basis: var(--item-width, 150px) (the ideal item size)
+    */
+    flex: 1 1 var(--item-width, 150px); 
+    min-width: 0; /*stops the implosion nightmare*/
+}

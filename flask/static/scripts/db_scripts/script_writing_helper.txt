@@ -1,0 +1,21 @@
+* Scripts that use the same imput params should be written into the same script file
+* A script needs a description metadata tag, described below
+Otherwise write them as normal python
+
+Please add at the begining of the script
+    DESCRIPTION: [description of the function]
+        These descriptions should look like
+        - If the function queries and returns data from the database
+            [script name] -
+                [input params]
+                Functions -
+                    [function title] - [return data]
+                    ...
+                    [function title] - [return data]
+        - If the function adds data to the database
+            [script name] -
+                [input params]
+                Functions -
+                    [function title] - [result in database]
+                    ...
+                    [function title] - [result in database]

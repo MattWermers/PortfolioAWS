@@ -1,0 +1,33 @@
+# ==========================================
+# Python / Flask Ignores
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+*.db
+*.sqlite3
+
+# ==========================================
+# Jekyll Ignores
+# ==========================================
+.jekyll-cache/
+.jekyll-metadata
+static/_site/
+_site/
+
+# ==========================================
+# Operating System & IDE Ignores
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

@@ -1,0 +1,19 @@
+/* Color Palette & Variables */
+:root {
+    --color-bg: #0B131A;                  /* Ink Black */
+
+    --color-banner: #795C5F;              /* Terracotta */
+    --color-banner-text: #FFFFFF;
+
+    --color-content: #1C2833;             /* Charcoal */
+    --color-content-text: #EAECEE;
+
+    --color-subcontent: #21313E;
+    --color-subcontext-primarytext: #FFFFFF;
+    --color-subcontext-secondarytext: #85929E;
+    --color-subcontext-accentext: #5DADE2;
+
+    --color-interactable: #65743A;
+    --color-interactable-text: #FFFFFF;
+    --color-interactable-hover: #82964B;
+}

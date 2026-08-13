@@ -1,0 +1,170 @@
+/*
+Component: Navigation Header
+
+Usage
+    IDs
+        #site-header      : Main page banner header container (flexbox layout)
+        
+    Classes
+        .logo             : Flex container for branding text and contact info
+        .logo-name        : Site title / owner name text
+        .logo-divider     : Vertical divider character wrapper
+        .logo-contact     : Email, phone, or external profile link anchors
+        .navbar           : Main navigation container
+        .nav-menu         : List container for main menu item buttons
+        .nav-item         : Sub-container for a main menu button, acts as anchor for hover dropdowns
+        .nav-link         : The clickable label inside a menu button
+        .dropdown-menu    : Container for dropdown link options (toggled on hover)
+        
+    Example:
+        <header id="site-header">
+            <div class="logo">
+                <h1 class="logo-name">John Doe</h1>
+                <span class="logo-divider">|</span>
+                <a href="mailto:john@example.com" class="logo-contact">john@example.com</a>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Section Name</a>
+                        <div class="dropdown-menu">
+                            <a href="#anchor1">Subsection 1</a>
+                            <a href="#anchor2">Subsection 2</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+*/
+#site-header {
+    background-color: var(--color-banner);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* Logo on left, navigation on right */
+    align-items: center;
+    border-bottom: 2px solid var(--color-subcontent);
+}
+
+/* Header logo and contact details container */
+#site-header .logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Wraps cleanly on mobile devices */
+    gap: 0.75rem;    /* Spacing between text and dividers */
+}
+
+#site-header .logo-name {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-banner-text);
+    font-weight: bold;
+}
+
+/* Faded divider lines to keep the design clean and uncluttered */
+#site-header .logo-divider {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.45); 
+}
+
+/* Secondary font size and color for the contacts to create hierarchy */
+#site-header a.logo-contact {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85); /* Premium, high-contrast off-white */
+    font-weight: normal;
+    text-decoration: underline;        /* Keep links underlined by default */
+    transition: opacity 0.2s ease;
+}
+
+#site-header .logo-description {
+    font-size: 1.25rem;
+    color: var(--color-banner-text);
+}
+
+#site-header a.logo-contact:hover {
+    opacity: 0.7;                     /* Subtle hover feedback without changing the color */
+}
+
+/* Horizontal list layout */
+.navbar .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.75rem; /* Gap separating the discrete boxes */
+}
+
+/* The discrete boxes with borders using interactable colors */
+.navbar .nav-item {
+    position: relative; /* Anchor for absolute positioning of dropdowns */
+    background-color: var(--color-interactable);
+    border: 1px solid var(--color-bg);
+    border-radius: 0.375rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.navbar .nav-item:hover {
+    background-color: var(--color-interactable-hover);
+    border-color: var(--color-interactable-text);
+}
+
+.navbar .nav-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: var(--color-interactable-text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Dropdown Menu Container */
+.navbar .dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.35rem; /* Gap between header box and dropdown menu */
+    
+    /* Dynamic width: wraps to fit its own longest item content */
+    width: max-content; 
+    min-width: 100%; /* Ensures it is at least as wide as the parent box */
+    
+    background-color: var(--color-content);
+    border: 1px solid var(--color-subcontent);
+    border-radius: 0.375rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 0;
+    z-index: 100; /* Floats above content-cards and timeline dots */
+}
+
+/* Invisible hover bridge to prevent the dropdown from disappearing over the gap */
+.navbar .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -0.4rem; /* Extends upward to cover the 0.35rem gap */
+    left: 0;
+    width: 100%;
+    height: 0.4rem; /* Height of the gap */
+    background-color: transparent; /* Remains completely invisible */
+}
+
+/* Show dropdown on hover */
+.navbar .nav-item:hover .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dropdown link items */
+.navbar .dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--color-content-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap; /* Prevents long titles from wrapping to a new line */
+}
+
+.navbar .dropdown-menu a:hover {
+    background-color: var(--color-interactable);
+    color: var(--color-interactable-text);
+}

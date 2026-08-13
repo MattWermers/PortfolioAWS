@@ -1,0 +1,16 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+# not sure where these are coming from
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# where the database lives
+db/
+
+# secrets
+keys/

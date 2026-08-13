@@ -1,0 +1,25 @@
+body {
+    background-color: var(--color-bg);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#name-contact{
+    background-color: var(--color-banner);
+    color: var(--color-banner-text);
+    text-align: center;
+}
+
+section {
+    background-color: var(--color-base);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--color-banner-text);
+    font-size: 0.9rem;
+}

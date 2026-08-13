@@ -1,0 +1,95 @@
+{% extends 'default.html' %}
+
+{% block content %}
+
+<!-- These load the react api's from the remote source straight to the browser -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- javescript goes at bottom so that variables exist-->
+
+
+<div class="landing-box" id="landing-box">
+    <div class="searchbar" id="init-searchbar">
+        <input class="input-textbox" id="init-textbox" type="text" placeholder="search for an ingredient">
+        <div class="suggestion-list" id="init-suggestions" style="display: none;"></div>
+        <button class="query" id="init-search">&#8594;</button>
+    </div>
+    <div id="landing-picklist"></div>
+    <!-- this holds the buttons that are initially displayed. IT NEEDS to be deleted or emptied for subsequent searches -->
+    <div class="picklist" id="add-picklist"></div> <!-- this holds buttons that are added by search-->
+</div>
+
+<div class="running-box" id="running-box" style="display: none;">
+    <!--Toggle this when init query is shown. Make landing-box hidden-->
+    <div class="left-side">
+        <div id="add-queryBuilder">
+            <p class="queryBuilder-header">Things I have:</p>
+            <div class="searchbar" id="add-searchbar">
+                <input class="input-textbox" id="addingred-textbox" type="text" placeholder="search for an ingredient">
+                <div class="suggestion-list" id="add-suggestions" style="display: none;"></div>
+            </div>
+        </div>
+        <div id="remove-queryBuilder">
+            <p class="queryBuilder-header">Things I avoid:</p>
+            <div class="picklist" id="remove-picklist"></div>
+            <div class="searchbar" id="remove-searchbar">
+                <input class="input-textbox" id="removeingred-textbox" type="text"
+                    placeholder="search for an ingredient">
+                <div class="suggestion-list" id="remove-suggestions" style="display: none;"></div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <button class="p_button" id="random-button">decide for me</button>
+    </div>
+    <div class="right-side">
+
+        <div class="display-holder" id="imgrec">
+            <div class="imgrec-img" id="imgrec-img">
+                <div class="imgrec-img-wrapper">
+                    <img src="{{ url_for('static', filename='Styles/test_img/images.jpg') }}" alt="french fries">
+                    <div id="imgrec-arrows-holder">
+                        <button id="arrow-left">&#2190;</button>
+                        <button id="arrow-right">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="imgrec-details" id="imgrec-details">
+                <div id="imgrec-title">French Fries</div>
+                <div id="imgrec-prepInfo">
+                    <p id="imgrec-prepInfo-time">Time: <span id="imgrec-header-prepInfo-time"></span></p>
+                    <p id="imgrec-prepInfo-ingCount">Ingredient Count:
+                        <spanid="imgrec-header-prepInfo-ingredient-count"></span>
+                    </p>
+                    <div id="imgrec-steps">
+                        <ol>
+                            <li>uno</li>
+                            <li>does</li>
+                            <li>tres</li>
+                        </ol>
+                    </div>
+                    <div id="imgrec-description"></div>
+                </div>
+            </div>
+        </div>
+        <div class="display-holder" id="listrec" style="display: none;">
+            <ul id="listrec-list">
+                <li class="listrec-rec-listitem">
+                    <div class="listrec-rec-listitem">
+                        <!--img here-->
+                        <p class="liscrec-rec-listitem-text"><span id="listrec-rec-listitem-name">blank</span>
+                        </p>
+                        <p class="listrec-rec-listitem-text"><span id="listrec-rec-listitem-time">blank</span>
+                        </p>
+                        <p class="listrec-rec-listitem-text"><span
+                                id="listrec-rec-listitem-ingredientcount">blank</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='scripts/wfd_app.js')}}"></script>
+{% endblock %}

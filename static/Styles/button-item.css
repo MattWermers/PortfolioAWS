@@ -1,0 +1,29 @@
+/*
+Component: Button
+
+Usage
+    Params
+        --btn-bg        : Default background color
+        --btn-bg-hvr    : Background on hover
+        --btn-t         : Default text color
+        --btn-t-hvr     : Text color on hover
+    
+    Classes
+        .button         : Style for a simple button
+        
+    Example:
+        <a href="#destination" class="button" style="--btn-bg: #ff0000; --btn-t: #ffffff;">Button Text</a>
+*/
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    background-color: var(--btn-bg, var(--color-interactable));
+    color: var(--btn-t, var(--color-interactable-text));
+}
+
+.button:hover {
+    background-color: var(--btn-bg-hvr, var(--color-content-hover));
+    color: var(--btn-t-hvr, var(--color-interactable-text));
+}

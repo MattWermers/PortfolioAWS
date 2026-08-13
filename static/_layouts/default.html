@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/style-colors.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/style-body.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/badge-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/content-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/experience-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/button-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/flex-object-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/bodywith-sidebar-item.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/Styles/navigation-item.css">
+</head>
+<body>
+
+    <!-- Inject the shared header component -->
+    {% include header.html %}
+
+    <!-- Target page content loads here -->
+    {{ content }}
+
+</body>
+<footer>
+    <p>&copy; 2026 Matt Wermers Portfolio | <span class="views-label">Views:</span><strong id="view-count">...</strong></p>
+</footer>
+
+<!-- Disclaimer this part was written by AI. I do not know how it works and it currently serves to test the backend
+    I plan to learn more about it later -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Get the current page title from Jekyll and format it for the database key
+        // e.g. "Matt Wermers Portfolio" becomes "matt-wermers-portfolio"
+        const pageKey = "{{ page.title | slugify | default: 'home' }}";
+
+        // 2. Load the Azure Function URL from the Jekyll data file (azure.yml)
+        const baseUrl = "{{ site.data.azure.function_url }}";
+        const functionUrl = `${baseUrl}${pageKey}`;
+
+        // 3. Fetch the count from your backend
+        fetch(functionUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to retrieve visitor count.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the counter on the screen (element id is view-count)
+                const countElement = document.getElementById("view-count");
+                if (countElement) {
+                    countElement.innerText = data.views;
+                }
+            })
+            .catch(err => {
+                console.error("Visitor count error:", err);
+                const countElement = document.getElementById("view-count");
+                if (countElement) {
+                    countElement.innerText = "N/A"; // fallback display
+                }
+            });
+    });
+</script>
+</html>
