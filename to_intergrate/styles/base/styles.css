@@ -1,0 +1,80 @@
+/* Design tokens live in tokens.css — loaded before this file. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  padding: 32px 40px 64px;
+}
+
+.wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#workspace {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Responsive layout (C1) — narrow screens (≤ 900 px) ──────────── */
+@media (max-width: 900px) {
+  body {
+    padding: 16px 16px 48px;
+  }
+
+  header.top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+  }
+
+  .toolbar-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .stats-grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stat-block {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 20px;
+  }
+
+  .stat-block:last-child {
+    border-bottom: none;
+  }
+
+  .legend-bar {
+    flex-direction: column;
+  }
+
+  .legend-bar-group {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .legend-bar-group:last-child {
+    border-bottom: none;
+  }
+}
