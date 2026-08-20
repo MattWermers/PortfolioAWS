@@ -5,7 +5,7 @@ The site runs on an AWS EC2 instance and is composed of two services:
 | Service | Role |
 |---------|------|
 | **Nginx** | Reverse proxy / TLS termination |
-| **Gunicorn** | Serves the Flask app (`/wfd` routes) |
+| **Gunicorn** | Serves the Flask app (`/wfd` and '/dwplus' routes) |
 
 The Jekyll static site is compiled and served directly from `/var/www/portfolio` via Nginx.
 
