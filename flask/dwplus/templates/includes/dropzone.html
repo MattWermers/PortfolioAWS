@@ -1,0 +1,20 @@
+<section id="landing-section">
+    <div id="app-options" tabindex="0" aria-label="app-options">
+        <button class="btn" id="new-job">New Job</button>
+        <button class="btn" id="sampleBtn">Use sample data</button>
+        <a href="{{ url_for('dashboard') }}" class="btn" id="check-job">Check job status</a>
+    </div>
+    <div id="uploads" tabindex="1" aria-label="uploads">
+        <div id="dropzone" tabindex="0" role="button" aria-label="Upload a CSV or XLSX file">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 3v13" />
+                <path d="M6 10l6-6 6 6" />
+                <path d="M4 18h16v3H4z" />
+            </svg>
+            <p class="main">Drop a CSV or XLSX file here, or click to browse</p>
+            <p class="sub">The first row is treated as the header line.</p>
+        </div>
+        <!-- TODO: User profile section -->
+    </div>
+</section>

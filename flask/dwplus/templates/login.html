@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Log in — DWPlus{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="login-wrap">
+    <div class="login-card">
+
+        <div class="login-header">
+            <h2>Sign in</h2>
+            <p class="login-sub">DWPlus Import</p>
+        </div>
+
+        {% if error %}
+        <div class="login-error" role="alert">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('login', next=request.args.get('next', '')) }}" class="login-form" novalidate>
+            <label for="username">Username</label>
+            <input
+                id="username"
+                name="username"
+                type="text"
+                autocomplete="username"
+                autofocus
+                required
+                placeholder="your username"
+            >
+
+            <label for="password">Password</label>
+            <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                placeholder="••••••••"
+            >
+
+            <button type="submit" class="btn primary login-submit">Sign in</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

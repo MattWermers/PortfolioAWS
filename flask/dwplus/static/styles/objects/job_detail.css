@@ -1,0 +1,63 @@
+/* ── Job detail page ─────────────────────────────────────────────────── */
+
+.breadcrumb {
+  font-size: 13px;
+}
+
+.breadcrumb a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.detail-header .dashboard-title code {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+/* ── Metadata grid ────────────────────────────────────────────────────── */
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.detail-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+}
+
+.detail-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  font-family: var(--font-mono);
+  word-break: break-all;
+}

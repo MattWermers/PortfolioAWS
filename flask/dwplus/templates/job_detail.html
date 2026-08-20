@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Detail — DWPlus{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/job_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrap">
+
+    <!-- ── Breadcrumb ──────────────────────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="{{ url_for('dashboard') }}">← Dashboard</a>
+    </nav>
+
+    <!-- ── Job detail header ──────────────────────────────────────── -->
+    <div id="detailHeader" class="detail-header">
+        <div>
+            <h2 class="dashboard-title">Job <code id="detailJobId">{{ job_id }}</code></h2>
+            <p class="dashboard-sub" id="detailMeta">Loading…</p>
+        </div>
+        <span class="status-badge" id="detailBadge"></span>
+    </div>
+
+    <!-- ── Metadata grid ─────────────────────────────────────────── -->
+    <section class="dashboard-section" id="detailMetaSection" style="display:none;">
+        <h3 class="section-title">Summary</h3>
+        <div class="detail-grid" id="detailGrid"></div>
+    </section>
+
+    <!-- ── Error / loading / not found notices ───────────────────── -->
+    <div id="detailLoading" class="dashboard-notice">Loading job…</div>
+    <div id="detailError"   class="dashboard-notice dashboard-notice--error" style="display:none;"></div>
+
+    <!-- ── Cancel / undo (stub) ──────────────────────────────────── -->
+    <section class="dashboard-section">
+        <h3 class="section-title">Actions</h3>
+        <div class="dashboard-stub">
+            <span class="stub-label">Coming soon</span>
+            <p>Cancel, dequeue, and undo operations will be available in a future release.</p>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        const JOB_ID       = {{ job_id | tojson }};
+        const DASHBOARD_URL = {{ url_for('dashboard') | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='scripts/job_detail.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+<header class="top">
+    <div class="brand">
+
+        <div class="brand-mark">
+            <!-- Draws the little diagram -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <!-- File outline-->
+                <!-- M4 4 — start at top-left corner -->
+                <!-- h10 — draw right 10 units (top edge) -->
+                <!-- l6 6 — draw diagonally down-right 6,6 (the folded corner) -->
+                <!-- v10 — draw down 10 (right edge) -->
+                <!-- H4 — draw left back to x=4 (bottom edge) -->
+                <!-- z — close the path back to start (left edge) -->
+                <path d="M4 4h10l6 6v10H4z" />
+                <!-- Folder corner crease-->
+                <!-- M14 4 — start at the notch point (where the fold begins) -->
+                <!-- v6 — draw down 6 , h6 — draw right 6 to the corner -->
+                <path d="M14 4v6h6" />
+                <!-- Text lines -->
+                <!-- M8 13h8 — a full-width line at y=13 (longer line) -->
+                <!-- M8 17h5 — a shorter line at y=17 -->
+                <path d="M8 13h8M8 17h5" />
+            </svg>
+        </div>
+
+        <!-- Header text -->
+        <div id="headerTitle">
+            <h1>DWPlus - Import</h1>
+            <p class="subtitle" id="headerSubtitle">Match incoming column headers to standard field names before import</p>
+        </div>
+    </div>
+
+    <div class="step-pill" id="stepPill"><b>Step 1</b>&nbsp;— upload a file</div>
+
+    <nav class="user-nav">
+        {% if current_user.is_authenticated %}
+            <span class="user-name">{{ current_user.username }}</span>
+            <a href="{{ url_for('dashboard') }}" class="btn user-nav-btn">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="btn user-nav-btn">Log out</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn user-nav-btn">Log in</a>
+        {% endif %}
+    </nav>
+
+</header>

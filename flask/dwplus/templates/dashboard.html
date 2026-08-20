@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard — DWPlus{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrap">
+
+    <!-- ── Page header ─────────────────────────────────────────────── -->
+    <div class="dashboard-header">
+        <div>
+            <h2 class="dashboard-title">Dashboard</h2>
+            <p class="dashboard-sub">Signed in as <strong>{{ current_user.username }}</strong></p>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn primary">New import</a>
+    </div>
+
+    <!-- ── Job list ────────────────────────────────────────────────── -->
+    <section class="dashboard-section">
+        <h3 class="section-title">Import jobs</h3>
+
+        <!-- Loading state (hidden by JS once data arrives) -->
+        <div id="jobsLoading" class="dashboard-notice">Loading jobs…</div>
+
+        <!-- Empty state -->
+        <div id="jobsEmpty" class="dashboard-notice" style="display:none;">
+            No jobs yet. <a href="{{ url_for('index') }}">Start a new import</a>.
+        </div>
+
+        <!-- Error state -->
+        <div id="jobsError" class="dashboard-notice dashboard-notice--error" style="display:none;"></div>
+
+        <!-- Table (hidden until data loads) -->
+        <div id="jobsTableWrap" style="display:none;">
+            <table class="jobs-table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>File</th>
+                        <th>Submitted</th>
+                        <th>Rows</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="jobsBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ── Saved mappings (stub) ────────────────────────────────────── -->
+    <section class="dashboard-section">
+        <h3 class="section-title">Saved mappings</h3>
+        <div class="dashboard-stub">
+            <span class="stub-label">Coming soon</span>
+            <p>Mapping library will be available in a future release.</p>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        /* Job detail route base — built server-side so JS never hardcodes a path */
+        const JOB_DETAIL_BASE = {{ url_for('job_detail', job_id='__id__') | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+{% endblock %}

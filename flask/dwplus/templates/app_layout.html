@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}DWPlus - Import{% endblock %}
+
+{% block extra_css %}
+    <!-- SheetJS (must load before app.js references XLSX) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Mapper-specific styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/stats_panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/toolbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/warn_banner.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/legend.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/expanded_preview.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/export_panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/objects/backend_status.css') }}">
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/landing.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/import-pipeline.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+{% endblock %}

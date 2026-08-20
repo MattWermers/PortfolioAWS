@@ -1,0 +1,172 @@
+/* ── Dashboard layout ────────────────────────────────────────────────── */
+
+.dashboard-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--navy);
+}
+
+.dashboard-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────── */
+
+.dashboard-section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+
+/* ── Notice states (loading / empty / error) ─────────────────────────── */
+
+.dashboard-notice {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 12px 0;
+}
+
+.dashboard-notice a {
+  color: var(--navy);
+  text-decoration: underline;
+}
+
+.dashboard-notice--error {
+  color: var(--danger);
+}
+
+/* ── Jobs table ───────────────────────────────────────────────────────── */
+
+.jobs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.jobs-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  padding: 0 12px 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.jobs-table td {
+  padding: 12px 12px 12px 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.jobs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.job-row {
+  cursor: pointer;
+  transition: background .1s;
+}
+
+.job-row:hover td {
+  background: var(--paper);
+}
+
+.job-id code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.job-file {
+  font-weight: 500;
+  color: var(--ink);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.job-date {
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.job-rows {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* ── Status badges ────────────────────────────────────────────────────── */
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-pending    { background: var(--unmapped-bg);  color: var(--unmapped); }
+.badge-processing { background: var(--brand-bg);     color: var(--brand); }
+.badge-completed  { background: var(--ledger-bg);    color: var(--ledger); }
+.badge-failed     { background: var(--danger-bg);    color: var(--danger); }
+.badge-cancelled  { background: var(--line-strong);  color: var(--ink-soft); }
+
+/* ── Saved mappings stub ─────────────────────────────────────────────── */
+
+.dashboard-stub {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.stub-label {
+  display: inline-block;
+  background: var(--line-strong);
+  color: var(--ink-soft);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  padding: 3px 7px;
+  flex-shrink: 0;
+}
+
+.dashboard-stub p {
+  margin: 0;
+}

@@ -1,0 +1,67 @@
+#dropzone {
+  background: var(--card);
+  border: 2px dashed var(--line-strong);
+  border-radius: 14px;
+  padding: 56px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+
+#dropzone:hover,
+#dropzone.drag,
+#dropzone:focus-visible {
+  border-color: var(--navy);
+  background: var(--demo-bg);
+  outline: none;
+}
+
+#dropzone svg {
+  width: 34px;
+  height: 34px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+#dropzone p.main {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 4px;
+}
+
+#dropzone p.sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+
+
+
+#fileInput {
+  display: none;
+}
+
+/* ── Landing section layout ──────────────────────────────────────────── */
+
+#landing-section {
+  display: flex;
+  flex-direction: column;
+}
+
+#app-options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#uploads {
+  display: none;           /* shown by landing.js when "New Job" is clicked */
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}

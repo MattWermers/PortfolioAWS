@@ -1,0 +1,10 @@
+{% extends 'app_layout.html' %}
+
+{% block content %}
+    {% include 'includes/dropzone.html' %}
+    {% include 'includes/stats_panel.html' %}
+    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls">
+    {% include 'includes/toolbar.html' %}
+    {% include 'includes/warn_banner.html' %}
+    {% include 'includes/workspace.html' %}
+{% endblock %}
